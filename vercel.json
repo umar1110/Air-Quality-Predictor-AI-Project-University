@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "client/project/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    },
+    {
+      "src": "server/app.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/server/app.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/client/project/$1"
+    }
+  ],
+  "functions": {
+    "server/app.py": {
+      "runtime": "python3.9"
+    }
+  }
+}
