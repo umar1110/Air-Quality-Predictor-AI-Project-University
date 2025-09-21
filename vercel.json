@@ -9,23 +9,18 @@
       }
     },
     {
-      "src": "server/app.py",
+      "src": "server/api/predict.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/server/app.py"
+      "src": "/api/predict",
+      "dest": "/server/api/predict.py"
     },
     {
       "src": "/(.*)",
       "dest": "/client/project/$1"
     }
-  ],
-  "functions": {
-    "server/app.py": {
-      "runtime": "python3.9"
-    }
-  }
+  ]
 }

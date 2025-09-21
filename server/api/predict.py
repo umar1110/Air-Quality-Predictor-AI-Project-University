@@ -15,7 +15,7 @@ feature_names = ['PM2.5', 'PM10', 'NO', 'NO2', 'NOx', 'NH3',
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-@app.route('/api/predict', methods=['POST'])
+@app.route('/', methods=['POST'])
 def predict():
     try:
         data = request.json  # Get JSON data from request
